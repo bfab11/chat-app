@@ -10,6 +10,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 export default class Start extends Component {
   constructor(props) {
@@ -18,13 +19,16 @@ export default class Start extends Component {
   }
   render() {
     return (
+      // background image
       <ImageBackground
         style={styles.imgBackground}
         resizeMode="cover"
         source={require("../assets/backgroundImage.png")}
       >
+        {/* main view */}
         <View style={styles.mainContainer}>
           <Text style={styles.title}>Chat</Text>
+
           <View style={styles.container}>
             <View style={styles.textInputContainer}>
               <Image
@@ -43,19 +47,31 @@ export default class Start extends Component {
               <Text style={styles.chooseColor}>Choose Your Background:</Text>
               <View style={styles.colorPicker}>
                 <TouchableOpacity
-                  //#090C08; #474056; #8A95A5; #B9C6AE
+                  //#FF8674; #474056; #8A95A5; #B9C6AE
+                  accessible={true}
+                  accessibilityLabel="Salmon"
+                  accessibilityHint="Choose the color Salmon as your background color."
                   style={[styles.colors, styles.black]}
                   onPress={() => this.setState({ bgColor: "#FF8674" })}
                 ></TouchableOpacity>
                 <TouchableOpacity
+                  accessible={true}
+                  accessibilityLabel="Dark Violet"
+                  accessibilityHint="Choose the color Dark Violet as your background color."
                   style={[styles.colors, styles.purple]}
                   onPress={() => this.setState({ bgColor: "#474056" })}
                 ></TouchableOpacity>
                 <TouchableOpacity
+                  accessible={true}
+                  accessibilityLabel="Light Gray"
+                  accessibilityHint="Choose the color Light Gray as your background color."
                   style={[styles.colors, styles.gray]}
                   onPress={() => this.setState({ bgColor: "#8A95A5" })}
                 ></TouchableOpacity>
                 <TouchableOpacity
+                  accessible={true}
+                  accessibilityLabel="Light Green"
+                  accessibilityHint="Choose the color Light Green as your background color."
                   style={[styles.colors, styles.green]}
                   onPress={() => this.setState({ bgColor: "#B9C6AE" })}
                 ></TouchableOpacity>
@@ -97,6 +113,9 @@ const styles = StyleSheet.create({
     color: "#fff",
     position: "absolute",
     top: 100,
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 4,
+    textShadowColor: "#000",
   },
   container: {
     width: "88%",
@@ -104,11 +123,21 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
   textInputContainer: {
     flex: 1,
     width: "88%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
   textInput: {
     top: 25,
@@ -116,8 +145,10 @@ const styles = StyleSheet.create({
     borderColor: "#090C08",
     borderWidth: 2,
     fontSize: 16,
+    fontStyle: "italic",
     fontWeight: "300",
     paddingLeft: 45,
+    opacity: 0.5,
   },
   textInputIcon: {
     position: "absolute",
@@ -139,6 +170,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#757083",
     width: "88%",
     height: 60,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+    opacity: 0.9,
   },
   buttonText: {
     fontSize: 16,
@@ -166,8 +203,14 @@ const styles = StyleSheet.create({
   colors: {
     width: 45,
     height: 45,
-    marginRight: 20,
+    margin: 10,
+    marginTop: 0,
     borderRadius: 45 / 2,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
   black: {
     backgroundColor: "#FF8674",

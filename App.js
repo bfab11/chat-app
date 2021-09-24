@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import { Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Start from "./components/Start";
 import Chat from "./components/Chat";
+import "react-native-gesture-handler";
 
 const Stack = createStackNavigator();
+
+var width = Dimensions.get("window").width;
 
 export default class App extends Component {
   constructor(props) {
@@ -16,11 +20,31 @@ export default class App extends Component {
         <Stack.Navigator
           initialRouteName="Start"
           screenOptions={{
-            headerShown: false,
+            headerTransparent: true,
+            headerTintColor: "#555",
           }}
         >
-          <Stack.Screen name="Start" component={Start} />
-          <Stack.Screen name="Chat" component={Chat} />
+          <Stack.Screen 
+            name="Start" 
+            component={Start}
+            options={{
+              headerTitleStyle: {
+                color: "white",
+              },
+            }} 
+          />
+          <Stack.Screen 
+            name="Chat" 
+            component={Chat}
+            options={{
+              headerTitleStyle: {
+                color: "#aaa",
+                borderBottomColor: "#555",
+                borderBottomWidth: 1,
+                width: width / 1.48,
+              },
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
